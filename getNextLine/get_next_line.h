@@ -6,24 +6,30 @@
 /*   By: amennad <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:13:05 by amennad           #+#    #+#             */
-/*   Updated: 2023/04/28 11:35:08 by amennad          ###   ########.fr       */
+/*   Updated: 2023/05/02 12:29:31 by amennad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
+
 # define GET_NEXT_LINE_H
 
-# include <stdlib.h>
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
 
-
-# include <stdio.h> // a delete
 # include "get_next_line.h"
-
-# include <sys/types.h>
-# include <sys/stat.h>
 # include <fcntl.h>
+# include <stdio.h> // a delete
+# include <stdlib.h>
+# include <sys/stat.h>
+# include <sys/types.h>
 # include <unistd.h>
 
 char	*get_next_line(int fd);
+size_t	ft_strlen(char *str);
+char	*ft_strdup(char *s1);
+char	*ft_substr(char *s, unsigned int start, size_t len);
+char	*ft_strjoin(char *s1, char *s2);
 
 #endif
