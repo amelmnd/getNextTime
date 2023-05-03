@@ -6,7 +6,7 @@
 /*   By: amennad <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:13:01 by amennad           #+#    #+#             */
-/*   Updated: 2023/05/03 11:20:35 by amennad          ###   ########.fr       */
+/*   Updated: 2023/05/03 11:21:41 by amennad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,15 @@ char	*get_next_line(int fd)
 	}
 	// free(buffer);
 	// buffer = ft_calloc(BUFFER_SIZE, sizeof(char));
+	if (read(fd, buffer, BUFFER_SIZE) < BUFFER_SIZE)
+	{
+	// 	printf("read(fd, buffer, BUFFER_SIZE) %zd\n", read(fd, buffer, BUFFER_SIZE) );
+	// 	printf("strlen buffer = %zu\n", ft_strlen(buffer));
+		printf("end buffer = %s\n", buffer);
+	line = ft_strjoin(line, ft_substr(buffer, 0, ft_strlen(buffer)));
 
+
+	}
 	if (read(fd, buffer, BUFFER_SIZE) == -1)
 		return (NULL);
 	return (line);
