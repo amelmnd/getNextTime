@@ -6,7 +6,7 @@
 /*   By: amennad <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:12:55 by amennad           #+#    #+#             */
-/*   Updated: 2023/05/03 10:51:33 by amennad          ###   ########.fr       */
+/*   Updated: 2023/05/03 14:07:02 by amennad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*ft_strdup(char *s1)
 		copy[i] = s1[i];
 		i++;
 	}
-	// copy[i] = '\0';
+	copy[i] = '\0';
 	return (copy);
 }
 
@@ -66,7 +66,7 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 		result[i] = s[start + i];
 		i++;
 	}
-	// result[i] = '\0';
+	result[i] = '\0';
 	return (result);
 }
 
@@ -93,39 +93,9 @@ char	*ft_strjoin(char *s1, char *s2)
 		result[i + y] = s2[y];
 		y++;
 	}
-	// result[i + y] = '\0';
-	// free(s1);
+	result[i + y] = '\0';
+	free(s1);
 	return (result);
 }
 
 
-void	*ft_memset(void *b, int c, size_t len)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < len)
-	{
-		((unsigned char *)b)[i] = (unsigned char) c;
-		i++;
-	}
-	return ((unsigned char *)b);
-}
-
-void	ft_bzero(void *s, size_t n)
-{
-	ft_memset(s, 0, (size_t) n);
-}
-
-void	*ft_calloc(size_t count, size_t size)
-{
-	size_t	*element;
-
-	if (size == SIZE_MAX)
-		count = 1;
-	element = (void *) malloc(count * size);
-	if (!element)
-		return (NULL);
-	ft_bzero(element, count * size);
-	return ((void *) element);
-}

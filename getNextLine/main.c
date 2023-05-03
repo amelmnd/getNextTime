@@ -6,7 +6,7 @@
 /*   By: amennad <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:01:55 by amennad           #+#    #+#             */
-/*   Updated: 2023/05/03 09:32:00 by amennad          ###   ########.fr       */
+/*   Updated: 2023/05/03 14:16:02 by amennad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ int	main(void)
 	char	*result1;
 	char	*result2;
 
-	fd = open("oneLineOneWorld", O_RDONLY);
+	// fd = open("oneLineOneWorld", O_RDONLY);
 	// fd = open("oneLineMoreWorlds", O_RDONLY);
+	fd = open("oneLineMoreWorlds_n", O_RDONLY);
 	// fd = open("lorem", O_RDONLY);
 	// fd = open("oneLineMoreWorlds\\n", O_RDONLY);
 
