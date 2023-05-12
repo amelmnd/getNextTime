@@ -6,7 +6,7 @@
 /*   By: amennad <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:01:55 by amennad           #+#    #+#             */
-/*   Updated: 2023/05/10 10:50:23 by amennad          ###   ########.fr       */
+/*   Updated: 2023/05/12 15:14:53 by amennad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,20 @@ int	main(void)
 	char	*result1;
 	char	*result2;
 
-	fd = open("oneLineOneWorld", O_RDONLY);
-	// fd = open("oneLineMoreWorlds", O_RDONLY);
-	// fd = open("oneLineMoreWorlds\\n", O_RDONLY);
+	// fd = open("oneLineOneWorld", O_RDONLY);
+	fd = open("oneLineMoreWorlds", O_RDONLY);
+	// fd = open("oneLineMoreWorldsn", O_RDONLY); //-1
 	// fd = open("oneLineMoreWorlds_n", O_RDONLY);
 	// fd = open("lorem", O_RDONLY);
 	// fd = open("multispace", O_RDONLY);
 
 	result1 = get_next_line(fd);
-	// printf("|result1 : %s|\n", result1);
+	printf("|result1 : %s|\n", result1);
 	free(result1);
 	result2 = get_next_line(fd);
-	// printf("|result2 : %s|\n", result2);
+	printf("|result2 : %s|\n", result2);
 	free(result2);
-	while(1)
-	;
+	// while(1)
+	// ;
 	return (0);
 }

@@ -6,14 +6,12 @@
 /*   By: amennad <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:12:55 by amennad           #+#    #+#             */
-/*   Updated: 2023/05/10 10:53:09 by amennad          ###   ########.fr       */
+/*   Updated: 2023/05/12 14:58:28 by amennad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdlib.h>
-
-
 
 size_t	ft_strlen(char *str)
 {
@@ -95,5 +93,25 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	result[i + y] = '\0';
 	free(s1);
+	free(s2);
 	return (result);
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	size_t	*element;
+	size_t	i;
+
+	if (size == SIZE_MAX)
+		count = 1;
+	element = (void *) malloc(count * size);
+	if (!element)
+		return (NULL);
+	i = 0;
+	while (i < count * size)
+	{
+		((unsigned char *) element)[i] = (unsigned char) 0;
+		i++;
+	}
+	return ((void *) element);
 }
