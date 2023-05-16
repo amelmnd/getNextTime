@@ -6,7 +6,7 @@
 /*   By: amennad <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:12:55 by amennad           #+#    #+#             */
-/*   Updated: 2023/05/12 14:58:28 by amennad          ###   ########.fr       */
+/*   Updated: 2023/05/16 15:40:12 by amennad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,17 @@ char	*ft_strdup(char *s1)
 char	*ft_substr(char *s, unsigned int start, size_t len)
 {
 	size_t	i;
+	size_t	s_len;
 	char	*result;
 
 	i = 0;
+	s_len = ft_strlen(s);
 	if (!s)
 		return (ft_strdup(""));
-	if (start > ft_strlen(s))
+	if (start > s_len)
 		return (ft_strdup(""));
-	if (len > ft_strlen(s))
-		result = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (len > s_len)
+		result = (char *)malloc(sizeof(char) * (s_len + 1));
 	else
 		result = (char *)malloc(sizeof(char) * (len + 1));
 	if (!result)
@@ -78,7 +80,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	y = 0;
 	if (!s1 || !s2)
 		return (NULL);
-	result = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	result = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!result)
 		return (NULL);
 	while (s1[i] != '\0')
@@ -101,10 +103,12 @@ void	*ft_calloc(size_t count, size_t size)
 {
 	size_t	*element;
 	size_t	i;
+	size_t	total_size;
 
-	if (size == SIZE_MAX)
+	total_size = count * size;
+	if (size == SIZE_MAX || total_size > SIZE_MAX)
 		count = 1;
-	element = (void *) malloc(count * size);
+	element = (void *) malloc(total_size);
 	if (!element)
 		return (NULL);
 	i = 0;
