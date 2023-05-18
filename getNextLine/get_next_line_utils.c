@@ -6,7 +6,7 @@
 /*   By: amennad <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:12:55 by amennad           #+#    #+#             */
-/*   Updated: 2023/05/16 18:17:52 by amennad          ###   ########.fr       */
+/*   Updated: 2023/05/17 12:23:23 by amennad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ char	*ft_strdup(char *s1)
 		i++;
 	}
 	copy[i] = '\0';
-	printf("**strdup : %p**\n", copy) ;
 	return (copy);
 }
 
@@ -68,7 +67,6 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 		i++;
 	}
 	result[i] = '\0';
-	printf("**substr : %p**\n", result) ;
 	return (result);
 }
 
@@ -96,7 +94,6 @@ char	*ft_strjoin(char *s1, char *s2)
 		y++;
 	}
 	result[i + y] = '\0';
-	printf("*joint : %p**\n", result) ;
 	free(s1);
 	free(s2);
 	return (result);
@@ -120,6 +117,5 @@ void	*ft_calloc(size_t count, size_t size)
 		((unsigned char *) element)[i] = (unsigned char) 0;
 		i++;
 	}
-	printf("**calloc : %p**\n", element) ;
 	return ((void *) element);
 }
