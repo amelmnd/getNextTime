@@ -6,7 +6,7 @@
 /*   By: amennad <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:13:01 by amennad           #+#    #+#             */
-/*   Updated: 2023/05/18 17:28:39 by amennad          ###   ########.fr       */
+/*   Updated: 2023/05/22 15:31:42 by amennad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,12 @@ static char	*read_line(int fd, char *buffer, char *line)
 				line = ft_strjoin(line, ft_substr(temp, 0, i + 1));
 				return (line);
 			}
-			else if (i == (int)ft_strlen(temp))
+			else if (i == ((int)ft_strlen(temp) - 1))
 			{
-				line = ft_substr(temp, 0, (int)ft_strlen(temp));
+				line = ft_substr(temp, 0, ((int)ft_strlen(temp)));
 			}
 			i++;
+
 		}
 	}
 	nb_cara_read = BUFFER_SIZE;
@@ -69,7 +70,7 @@ static char	*read_line(int fd, char *buffer, char *line)
 					}
 				}
 				temp = ft_substr(buffer, i + 1, nb_cara_read);
-				line = ft_strjoin(line, ft_substr(buffer, 0, i + 1));
+				line = ft_strjoin(line, ft_substr(buffer, 0, i));
 				return (line);
 			}
 			else if (i == nb_cara_read && nb_cara_read < BUFFER_SIZE)
