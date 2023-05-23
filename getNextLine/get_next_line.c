@@ -6,7 +6,7 @@
 /*   By: amennad <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:13:01 by amennad           #+#    #+#             */
-/*   Updated: 2023/05/22 15:31:42 by amennad          ###   ########.fr       */
+/*   Updated: 2023/05/23 17:02:44 by amennad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,35 +23,39 @@ static char	*read_line(int fd, char *buffer, char *line)
 		i = 0;
 		while (i < (int)ft_strlen(temp))
 		{
+
 			if (temp[i] == '\n')
 			{
-				if (!temp)
-				{
-					temp = malloc(sizeof(char) * ((int)ft_strlen(temp) - i));
-					if (!temp)
-					{
-						free(line);
-						return (NULL);
-					}
-				}
-				temp = ft_substr(temp, i + 1, (int)ft_strlen(temp));
 				line = ft_strjoin(line, ft_substr(temp, 0, i + 1));
+				temp = ft_substr(temp, i + 1, (int)ft_strlen(temp));
 				return (line);
 			}
 			else if (i == ((int)ft_strlen(temp) - 1))
-			{
+				{
 				line = ft_substr(temp, 0, ((int)ft_strlen(temp)));
-			}
+				free(temp);
+				}
 			i++;
-
 		}
 	}
+	// if (line[ft_strlen(line)-1] == '\n')
+	// 	return (line);
 	nb_cara_read = BUFFER_SIZE;
 	while (nb_cara_read > 0)
 	{
 		i = 0;
 		nb_cara_read = read(fd, buffer, BUFFER_SIZE);
-		if (nb_cara_read <= 0)
+		if (nb_cara_read == 0)
+		{
+			if (!line[0])
+			{
+				free(line);
+				return (NULL);
+			}
+			else
+				return (line);
+		}
+		if (nb_cara_read < 0)
 		{
 			free(line);
 			return (NULL);
@@ -70,7 +74,7 @@ static char	*read_line(int fd, char *buffer, char *line)
 					}
 				}
 				temp = ft_substr(buffer, i + 1, nb_cara_read);
-				line = ft_strjoin(line, ft_substr(buffer, 0, i));
+				line = ft_strjoin(line, ft_substr(buffer, 0, i+1));
 				return (line);
 			}
 			else if (i == nb_cara_read && nb_cara_read < BUFFER_SIZE)
