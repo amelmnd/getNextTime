@@ -6,108 +6,57 @@
 /*   By: amennad <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:13:01 by amennad           #+#    #+#             */
-/*   Updated: 2023/05/23 17:02:44 by amennad          ###   ########.fr       */
+/*   Updated: 2023/05/24 13:48:43 by amennad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*read_line(int fd, char *buffer, char *line)
+int	end_line(const char *str)
 {
-	int			nb_cara_read;
-	int			i;
-	static char	*temp;
+	int	i;
 
-	if (temp)
+	i = 0;
+	while (str[i] != '\0')
 	{
-		i = 0;
-		while (i < (int)ft_strlen(temp))
-		{
+		if (str[i] == '\n')
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+static char *cut_line(char *storage, char *line)
+{
 
-			if (temp[i] == '\n')
-			{
-				line = ft_strjoin(line, ft_substr(temp, 0, i + 1));
-				temp = ft_substr(temp, i + 1, (int)ft_strlen(temp));
-				return (line);
-			}
-			else if (i == ((int)ft_strlen(temp) - 1))
-				{
-				line = ft_substr(temp, 0, ((int)ft_strlen(temp)));
-				free(temp);
-				}
-			i++;
-		}
-	}
-	// if (line[ft_strlen(line)-1] == '\n')
-	// 	return (line);
-	nb_cara_read = BUFFER_SIZE;
-	while (nb_cara_read > 0)
+}
+
+static char *ft_read_file(int fd, char *storage)
+{
+	char	*buffer;
+	int		nb_read;
+
+	nb_read = BUFFER_SIZE;
+	buffer = (char *)malloc(sizeof(char) * BUFFER_SIZE);
+	if (!buffer)
+		return (NULL);
+	while (nb_read > 0 && (end_line(buffer) == -1)) //✅
 	{
-		i = 0;
-		nb_cara_read = read(fd, buffer, BUFFER_SIZE);
-		if (nb_cara_read == 0)
-		{
-			if (!line[0])
-			{
-				free(line);
-				return (NULL);
-			}
-			else
-				return (line);
-		}
-		if (nb_cara_read < 0)
-		{
-			free(line);
-			return (NULL);
-		}
-		while (i < nb_cara_read)
-		{
-			if (buffer[i] == '\n')
-			{
-				if (!temp)
-				{
-					temp = malloc(sizeof(char) * (nb_cara_read - i));
-					if (!temp)
-					{
-						free(line);
-						return (NULL);
-					}
-				}
-				temp = ft_substr(buffer, i + 1, nb_cara_read);
-				line = ft_strjoin(line, ft_substr(buffer, 0, i+1));
-				return (line);
-			}
-			else if (i == nb_cara_read && nb_cara_read < BUFFER_SIZE)
-			{
-				line = ft_substr(buffer, 0, nb_cara_read);
-				return (line);
-			}
-			i++;
-		}
-		line = ft_strjoin(line, ft_substr(buffer, 0, nb_cara_read));
-		if (nb_cara_read < BUFFER_SIZE)
-			nb_cara_read = 0;
+		nb_read = read(fd, buffer, BUFFER_SIZE);
+		if (storage)
+			storage = ft_strjoin(storage, buffer);
+		else
+			storage = ft_strdup(buffer);
 	}
-	return (line);
+	free(buffer); //✅
+	return (storage);
 }
 
 char	*get_next_line(int fd)
 {
-	char	*buffer;
-	char	*line;
+	static char	*storage;
 
-	if (fd == -1)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = (char *)ft_calloc(BUFFER_SIZE, sizeof(char));
-	if (!buffer)
-		return (NULL);
-	line = (char *)ft_calloc(BUFFER_SIZE, sizeof(char));
-	if (!line)
-	{
-		free(buffer);
-		return (NULL);
-	}
-	line = read_line(fd, buffer, line);
-	free(buffer);
-	return (line);
+	storage = ft_read_file(fd, storage);
+	return (storage);
 }
