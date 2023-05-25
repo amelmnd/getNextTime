@@ -6,16 +6,16 @@
 /*   By: amennad <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:12:55 by amennad           #+#    #+#             */
-/*   Updated: 2023/05/17 12:23:23 by amennad          ###   ########.fr       */
+/*   Updated: 2023/05/25 11:02:37 by amennad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdlib.h>
 
-size_t	ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (str[i] != '\0')
@@ -40,6 +40,7 @@ char	*ft_strdup(char *s1)
 		i++;
 	}
 	copy[i] = '\0';
+	// free(s1);//buffer ERR segmentation fault
 	return (copy);
 }
 
@@ -94,28 +95,21 @@ char	*ft_strjoin(char *s1, char *s2)
 		y++;
 	}
 	result[i + y] = '\0';
-	free(s1);
-	free(s2);
+	// free(s1);//STORAGE
+	// free(s2);//buffer ERR pointer being freed was not allocated
 	return (result);
 }
 
-void	*ft_calloc(size_t count, size_t size)
+int	ft_strchr(char *str, char c)
 {
-	size_t	*element;
-	size_t	i;
-	size_t	total_size;
+	int	i;
 
-	total_size = count * size;
-	if (size == SIZE_MAX || total_size > SIZE_MAX)
-		count = 1;
-	element = (void *) malloc(total_size);
-	if (!element)
-		return (NULL);
 	i = 0;
-	while (i < count * size)
+	while (i < ft_strlen(str))
 	{
-		((unsigned char *) element)[i] = (unsigned char) 0;
+		if (str[i] == c)
+			return (i + 1);
 		i++;
 	}
-	return ((void *) element);
+	return (-1);
 }
