@@ -6,7 +6,7 @@
 /*   By: amennad <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:12:55 by amennad           #+#    #+#             */
-/*   Updated: 2023/05/25 11:02:37 by amennad          ###   ########.fr       */
+/*   Updated: 2023/05/26 10:03:49 by amennad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 
 	i = 0;
 	s_len = ft_strlen(s);
+	if (s_len == 0)
+		return (ft_strdup(""));
 	if (!s)
 		return (ft_strdup(""));
 	if (start > s_len)
@@ -95,8 +97,6 @@ char	*ft_strjoin(char *s1, char *s2)
 		y++;
 	}
 	result[i + y] = '\0';
-	// free(s1);//STORAGE
-	// free(s2);//buffer ERR pointer being freed was not allocated
 	return (result);
 }
 
