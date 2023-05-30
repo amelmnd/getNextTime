@@ -6,7 +6,7 @@
 /*   By: amennad <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:12:55 by amennad           #+#    #+#             */
-/*   Updated: 2023/05/26 10:03:49 by amennad          ###   ########.fr       */
+/*   Updated: 2023/05/30 10:16:40 by amennad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ char	*ft_strdup(char *s1)
 	int		i;
 	char	*copy;
 
+	if (!s1)
+		return (ft_strdup(""));
 	i = 0;
 	copy = (char *)malloc(sizeof(char) * (ft_strlen(s1)) + 1);
 	if (!copy)
@@ -40,7 +42,6 @@ char	*ft_strdup(char *s1)
 		i++;
 	}
 	copy[i] = '\0';
-	// free(s1);//buffer ERR segmentation fault
 	return (copy);
 }
 
@@ -113,3 +114,4 @@ int	ft_strchr(char *str, char c)
 	}
 	return (-1);
 }
+
