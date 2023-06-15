@@ -6,7 +6,7 @@
 /*   By: amennad <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:13:01 by amennad           #+#    #+#             */
-/*   Updated: 2023/06/15 13:42:11 by amennad          ###   ########.fr       */
+/*   Updated: 2023/06/15 15:15:25 by amennad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,14 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	{
+		if (storage)
+			free_elements(&storage, 0);
 		return (NULL);
+	}
 	line = NULL;
 	ft_read_file(fd, &storage);
-	if (!storage || *storage != '\0')
+	if (storage || *storage != '\0')
 		cut_storage(&storage, &line);
 	if (!line || *line == '\0')
 		return (free_elements(&storage, &line), NULL);
