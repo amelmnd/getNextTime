@@ -6,7 +6,7 @@
 /*   By: amennad <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:01:55 by amennad           #+#    #+#             */
-/*   Updated: 2023/06/14 16:23:07 by amennad          ###   ########.fr       */
+/*   Updated: 2023/06/15 10:48:02 by amennad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,20 @@ int	main(int ac, char **av)
 {
 	int		fd;
 	char	*result;
+	int		i;
 
+	i = 0;
 	if (ac != 2)
 		return (0);
 	fd = open(av[1], O_RDONLY);
 	result = NULL;
-	for (int i = 0; i < 15; i++)
+	while (i < 2)
 	{
 		result = get_next_line(fd);
 		printf("result : %s\n", result);
 		free(result);
 		result = NULL;
+		i++;
 	}
 	// system("leaks a.out");
 	return (0);
