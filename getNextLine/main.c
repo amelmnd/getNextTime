@@ -6,7 +6,7 @@
 /*   By: amennad <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:01:55 by amennad           #+#    #+#             */
-/*   Updated: 2023/06/15 13:38:44 by amennad          ###   ########.fr       */
+/*   Updated: 2023/06/16 14:24:15 by amennad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,17 @@ int	main(int ac, char **av)
 		result = NULL;
 		i++;
 	}
-
-	// system("leaks a.out");
+	// close(fd);
+	// fd = open(av[1], O_RDONLY);
+	// i = 0;
+	// while (i < 6)
+	// {
+	// 	result = get_next_line(fd);
+	// 	printf("r after close: %s\n", result);
+	// 	free(result);
+	// 	result = NULL;
+	// 	i++;
+	// }
+	// // system("leaks a.out");
 	return (0);
 }
