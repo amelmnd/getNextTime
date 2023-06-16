@@ -6,7 +6,7 @@
 /*   By: amennad <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:13:01 by amennad           #+#    #+#             */
-/*   Updated: 2023/06/15 15:15:25 by amennad          ###   ########.fr       */
+/*   Updated: 2023/06/16 09:43:51 by amennad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	cut_storage(char **storage, char **line)
 	int		len_line;
 	char	*temp;
 
+	// printf("titi\n");
 	end_line = ft_strchr(*storage, '\n');
 	len_line = ft_strlen(*storage);
 	*line = ft_substr(*storage, 0, end_line);
@@ -50,8 +51,12 @@ void	ft_read_file(int fd, char **storage)
 	while (nb_read && ft_strchr(buffer, '\n') == -1)
 	{
 		nb_read = read(fd, buffer, BUFFER_SIZE);
+		// nb_read = -1;
 		if (nb_read == -1 || (!nb_read && !storage))
+		{
 			return (free_elements(storage, 0));
+			// printf("grominet\n");
+		}
 		buffer[nb_read] = '\0';
 		if (*storage)
 			*storage = ft_strjoin(*storage, buffer);
@@ -73,6 +78,11 @@ char	*get_next_line(int fd)
 	}
 	line = NULL;
 	ft_read_file(fd, &storage);
+	if (!storage || *storage == '\0')
+	{
+		free_elements(&storage, 0);
+		return (NULL);
+	}
 	if (storage || *storage != '\0')
 		cut_storage(&storage, &line);
 	if (!line || *line == '\0')
