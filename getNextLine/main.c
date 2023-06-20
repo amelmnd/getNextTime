@@ -6,13 +6,14 @@
 /*   By: amennad <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:01:55 by amennad           #+#    #+#             */
-/*   Updated: 2023/06/16 14:24:15 by amennad          ###   ########.fr       */
+/*   Updated: 2023/06/20 09:46:31 by amennad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "sys/time.h"
 #include <fcntl.h>
+#include <stdio.h>
 
 int	main(int ac, char **av)
 {
@@ -25,7 +26,7 @@ int	main(int ac, char **av)
 		return (0);
 	fd = open(av[1], O_RDONLY);
 	result = NULL;
-	while (i < 2)
+	while (i < 10)
 	{
 		result = get_next_line(fd);
 		printf("result : %s\n", result);
@@ -44,6 +45,6 @@ int	main(int ac, char **av)
 	// 	result = NULL;
 	// 	i++;
 	// }
-	// // system("leaks a.out");
+	system("leaks a.out");
 	return (0);
 }
