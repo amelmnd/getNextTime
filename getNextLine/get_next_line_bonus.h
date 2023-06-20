@@ -6,7 +6,7 @@
 /*   By: amennad <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 10:15:07 by amennad           #+#    #+#             */
-/*   Updated: 2023/06/20 10:28:37 by amennad          ###   ########.fr       */
+/*   Updated: 2023/06/20 11:04:49 by amennad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@
 #  define BUFFER_SIZE 1
 # endif
 
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <fcntl.h>
 # include <limits.h>
 
 char	*get_next_line(int fd);
