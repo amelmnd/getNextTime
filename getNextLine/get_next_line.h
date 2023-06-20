@@ -6,7 +6,7 @@
 /*   By: amennad <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:13:05 by amennad           #+#    #+#             */
-/*   Updated: 2023/06/20 09:49:26 by amennad          ###   ########.fr       */
+/*   Updated: 2023/06/20 10:17:35 by amennad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 char	*get_next_line(int fd);
 int		ft_strlen(char *s);
 int		line_chr(char *s);
-void	free_elements(char **dust);
 char	*ft_strdup(char *s);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_substr(char *s, int start, int len);
