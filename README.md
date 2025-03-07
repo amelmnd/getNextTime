@@ -1,11 +1,10 @@
+```markdown
 <h1 align="center">
 Get Next Line
-</h1> 
+</h1>
 <p align="center">
 <img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white" />
 </p>
-
-
 
 - [Description](#description)
 - [Structure du projet](#structure-du-projet)
@@ -18,11 +17,9 @@ Get Next Line
   - [Utilisation](#utilisation)
 - [Test](#test)
 
-
 ## Description
 
-le but de ce projet est de développer une fonction qui renvoie une ligne
-lue depuis un descripteur de fichier.
+Le but de ce projet est de développer une fonction qui renvoie une ligne lue depuis un descripteur de fichier.
 
 ## Structure du projet
 ### Fichiers .c
@@ -31,10 +28,10 @@ La fonction get next line.
 
 ### .h (En-tête)
 
-Inclure `#include "get_next_line.h"` dans tous les fichiers.c afin d’avoir accès aux fonctions incluse partout.
+Inclure `#include "get_next_line.h"` dans tous les fichiers .c afin d’avoir accès aux fonctions incluses partout.
 
 ## La fonction
-La fonction attent le file descriptor d'un fichier lu dans le main et passer en argument à la compilation.
+La fonction attend le descripteur de fichier d'un fichier lu dans le main et passé en argument à la compilation.
 
 ## Utilisation de get next line
 
@@ -47,7 +44,7 @@ La fonction attent le file descriptor d'un fichier lu dans le main et passer en 
 ```shell
 cc -Wall -Wextra -Werror -D BUFFER_SIZE=<number> <files>.c
 ```
-_exemple :_
+_Exemple :_
 ```shell
 cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 get_next_line.c get_next_line_utils.c main.c
 ```
@@ -59,13 +56,11 @@ cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 get_next_line.c get_next_line_utils.c
 
 ### Utilisation
 
-- utiliser la fonctions get next line dans son projet :  
-  incluez le fichier dossier de la fonction 
-  puis inclure dand dans le fichier d'en-tête
+- Utiliser la fonction get next line dans son projet :
+  Incluez le fichier d'en-tête de la fonction :
 ```C
 #include "get_next_line/get_next_line.h"
 ```
-
 
 ## Test
 La francinette
