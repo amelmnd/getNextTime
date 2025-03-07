@@ -2,24 +2,20 @@
 Get Next Line
 </h1> 
 <p align="center">
-<img src="https://badge42.vercel.app/api/v2/clj4c286d001608ky7gpcs9h7/project/3078564" />
 <img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white" />
-</p>
-<p align="center">
-<img src="https://img.shields.io/badge/bonus-ok-5CB95B" />
-<img src="https://img.shields.io/badge/42_Nice-000" />
 </p>
 
 
 
 - [Description](#description)
 - [Structure du projet](#structure-du-projet)
-  * [Fichiers .c](#fichiers-c)
-  * [.h (En-tête)](#h--en-t-te-)
-- [La fonction](#les-fonctions)
-- [Utilisation de get next line](#utilisation-de-get next line)
-  * [Pre-requis](#pre-requis)
-  * [Utilisation](#utilisation)
+  - [Fichiers .c](#fichiers-c)
+  - [.h (En-tête)](#h-en-tête)
+- [La fonction](#la-fonction)
+- [Utilisation de get next line](#utilisation-de-get-next-line)
+  - [Pre-requis](#pre-requis)
+  - [Compilation et execution](#compilation-et-execution)
+  - [Utilisation](#utilisation)
 - [Test](#test)
 
 
@@ -46,9 +42,19 @@ La fonction attent le file descriptor d'un fichier lu dans le main et passer en 
 
 * **compilateur `gcc`**
 
-### Compilation 
+### Compilation et execution
+**Compilation**
 ```shell
-cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 <files>.c
+cc -Wall -Wextra -Werror -D BUFFER_SIZE=<number> <files>.c
+```
+_exemple :_
+```shell
+cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 get_next_line.c get_next_line_utils.c main.c
+```
+
+**Exécution**
+```shell
+./a.out file_test/<chose file>
 ```
 
 ### Utilisation
